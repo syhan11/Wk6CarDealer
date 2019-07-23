@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>AddCategory</title>
+</head>
+<body>
+<div th:insert="basicfrag :: navFrag"></div>
+
+<div class="jumbotron jumbotron-fluid">
+    <h1 class="display-4 title-display">Spring Boot Dealership</h1>
+</div>
+<form th:action="@{/processcategory}" th:object="${category}" method="post">
+    <div class="container">
+        <input th:field="*{id}" type="hidden">
+        Title:<input th:field="*{title}" type="text"><br/>
+
+
+    </div>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+
+
+
+
+<div th:insert="basicfrag :: copyFrag"></div>
+<div th:insert="basicfrag :: scriptFrag"></div>
+
+
+
+</body>
+</html>

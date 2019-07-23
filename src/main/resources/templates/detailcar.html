@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>Detail</title>
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1 class="display-4" name="title">Car Detail Information</h1><br/>
+    <a href="/" class="btn btn-outline-dark btn-lg">
+        <span class="glyphicon glyphicon-remove"></span>Close</a>
+
+
+    <!--<button type="button" class="btn btn-default">-->
+        <!--<span class="glyphicon glyphicon-remove">Delete</span>-->
+        <!--<a href="/"></a></button>-->
+    <!---->
+
+
+</div>
+<div class="card bg-light mb-3" style="width: 100%">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">Maker:</div>
+            <div class="col-9"><p th:text="${car.maker}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-3">Model:</div>
+            <div class="col-9"><p th:text="${car.model}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-3">Color:</div>
+            <div class="col-9"><p th:text="${onemsg.postedDate}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-3">Posted By:</div>
+            <div class="col-9"><p th:text="${onemsg.postedBy}"></p></div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="basicfrag :: copyFrag"></div>
+<div th:insert="basicfrag :: scriptFrag"></div>
+
+</body>
+</html>

@@ -8,7 +8,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String title;
+    private String maker;
+    private String model;
     private String color;
     private long qty;
 
@@ -27,12 +28,20 @@ public class Car {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMaker() {
+        return maker;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMaker(String maker) {
+        this.maker = maker;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getColor() {

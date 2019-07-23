@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -17,10 +17,90 @@ public class CarDealerController {
 
     @RequestMapping("/")
     public String homePage(Model model) {
+        return "homepg";
+    }
+
+    @GetMapping("/addcar")
+    public String addCar(Model model) {
+        model.addAttribute("allcategories", categoryRepository.findAll());
+        model.addAttribute("car", new Car());
+        return "addcar";
+    }
+
+    @PostMapping("/processcar")
+    public String processPage(@ModelAttribute("car") Car car, Model model){
+        carRepository.save(car);
+        return "redirect:/listcar";
+    }
+
+    @RequestMapping("/listcar")
+    public String listCar(Model model){
+
+        model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("allcars", carRepository.findAll());
+        return "listcar";
+    }
+
+//    @RequestMapping("/detailcar/{id}")
+//    public String showMsg(@PathVariable("id") long id, Model model){
+//        model.addAttribute("car", carRepository.findById(id).get());
+//        return "detailcar";
+//    }
+
+    @RequestMapping("/updatecar/{id}")
+    public String updateCar(@PathVariable("id") long id, Model model){
+        model.addAttribute("car", carRepository.findById(id).get());
+
+        model.addAttribute("allcategories", categoryRepository.findAll());
+        return "updatecar";
+    }
+
+    @RequestMapping("/deletecar/{id}")
+    public String deleteCar(@PathVariable("id") long id, Model model) {
+
+        carRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+
+
+
+    @GetMapping("/addcategory")
+    public String addCategory(Model model) {
+        //model.addAttribute("allcategories", categoryRepository.findAll());
+        model.addAttribute("category", new Category());
+        return "addcategory";
+    }
+
+    @PostMapping("/processcategory")
+    public String processCategory(@ModelAttribute("category") Category category, Model model){
+        categoryRepository.save(category);
+        return "redirect:/listcategory";
+    }
+
+
+    @RequestMapping("/listcategory")
+    public String listCategory(Model model){
+
         model.addAttribute("allcategories", categoryRepository.findAll());
         model.addAttribute("allcars", carRepository.findAll());
-        return "list";
+        return "listcategory";
     }
+
+    @RequestMapping("/updatecategory/{id}")
+    public String updateCategory(@PathVariable("id") long id, Model model){
+        model.addAttribute("category", categoryRepository.findById(id).get());
+        //model.addAttribute("allcategories", categoryRepository.findAll());
+        return "addcategory";
+    }
+
+    @RequestMapping("/deletecategory/{id}")
+    public String deleteCategory(@PathVariable("id") long id, Model model) {
+
+        categoryRepository.deleteById(id);
+        return "redirect:/";
+    }
+
 
     @PostConstruct()
     public void initTable() {

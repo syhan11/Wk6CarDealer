@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>CarList</title>
+</head>
+
+
+<body>
+<div th:insert="basicfrag :: navFrag"></div>
+
+<div class="jumbotron jumbotron-fluid">
+    <h1 class="display-4 title-display">Car Listing</h1>
+</div>
+
+<table>
+    <tr style="width: 100%">
+        <!--<th>Category</th>-->
+        <th>Maker</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="car : ${allcars}">
+        <td th:text="${car.maker}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.color}"></td>
+        <td th:text="${car.qty}"></td>
+        <td>
+            <div class="btn-group" role="group" aria-label="...">
+
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <a th:href="@{/updatecar/{id}(id=${car.id})}">
+                        Update</a></button>
+
+                <!--<button type="button" class="btn btn-default">-->
+                    <!--<span class="glyphicon glyphicon-search"></span>-->
+                    <!--<a th:href="@{/detailcar/{id}(id=${car.id})}">-->
+                        <!--Detail</a></button>-->
+
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <a th:href="@{/deletecar/{id}(id=${car.id})}">
+                        Delete</a></button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+    <div th:insert="basicfrag :: copyFrag"></div>
+    <div th:insert="basicfrag :: scriptFrag"></div>
+</body>
+</html>
