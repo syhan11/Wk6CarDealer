@@ -41,33 +41,29 @@ public class CarDealerController {
         return "listcar";
     }
 
-//    @RequestMapping("/detailcar/{id}")
-//    public String showMsg(@PathVariable("id") long id, Model model){
-//        model.addAttribute("car", carRepository.findById(id).get());
-//        return "detailcar";
-//    }
+    @RequestMapping("/detailcar/{id}")
+    public String showMsg(@PathVariable("id") long id, Model model){
+
+        model.addAttribute("car", carRepository.findById(id).get());
+        model.addAttribute("category", carRepository.findById(id).get().getCategory());
+        return "detailcar";
+    }
 
     @RequestMapping("/updatecar/{id}")
     public String updateCar(@PathVariable("id") long id, Model model){
         model.addAttribute("car", carRepository.findById(id).get());
-
         model.addAttribute("allcategories", categoryRepository.findAll());
         return "updatecar";
     }
 
     @RequestMapping("/deletecar/{id}")
     public String deleteCar(@PathVariable("id") long id, Model model) {
-
         carRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/listcar";
     }
-
-
-
 
     @GetMapping("/addcategory")
     public String addCategory(Model model) {
-        //model.addAttribute("allcategories", categoryRepository.findAll());
         model.addAttribute("category", new Category());
         return "addcategory";
     }
@@ -77,7 +73,6 @@ public class CarDealerController {
         categoryRepository.save(category);
         return "redirect:/listcategory";
     }
-
 
     @RequestMapping("/listcategory")
     public String listCategory(Model model){
@@ -96,11 +91,9 @@ public class CarDealerController {
 
     @RequestMapping("/deletecategory/{id}")
     public String deleteCategory(@PathVariable("id") long id, Model model) {
-
         categoryRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/listcategory";
     }
-
 
     @PostConstruct()
     public void initTable() {

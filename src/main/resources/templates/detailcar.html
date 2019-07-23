@@ -3,23 +3,20 @@
 
 <head>
     <div th:insert="basicfrag :: headerFrag"></div>
-    <title>Detail</title>
+    <title>DetailCar</title>
 </head>
 
 <body>
-<div class="jumbotron">
-    <h1 class="display-4" name="title">Car Detail Information</h1><br/>
-    <a href="/" class="btn btn-outline-dark btn-lg">
-        <span class="glyphicon glyphicon-remove"></span>Close</a>
+    <div th:insert="basicfrag :: navFrag"></div>
+
+    <h1 class="display-4 subtitle-display">Car Detail Information</h1><br/>
+
+    <button type="button" class="btn btn-default">
+        <a href="/listcar">
+        <span class="glyphicon glyphicon-arrow-left"> Close</span></a>
+    </button>
 
 
-    <!--<button type="button" class="btn btn-default">-->
-        <!--<span class="glyphicon glyphicon-remove">Delete</span>-->
-        <!--<a href="/"></a></button>-->
-    <!---->
-
-
-</div>
 <div class="card bg-light mb-3" style="width: 100%">
     <div class="card-body">
         <div class="row">
@@ -32,14 +29,19 @@
         </div>
         <div class="row">
             <div class="col-3">Color:</div>
-            <div class="col-9"><p th:text="${onemsg.postedDate}"></p></div>
+            <div class="col-9"><p th:text="${car.color}"></p></div>
         </div>
         <div class="row">
-            <div class="col-3">Posted By:</div>
-            <div class="col-9"><p th:text="${onemsg.postedBy}"></p></div>
+            <div class="col-3">Category:</div>
+            <div class="col-9"><p th:text="${category.title}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-3">Quantity:</div>
+            <div class="col-9"><p th:text="${car.qty}"></p></div>
         </div>
     </div>
 </div>
+
 
 <div th:insert="basicfrag :: copyFrag"></div>
 <div th:insert="basicfrag :: scriptFrag"></div>

@@ -7,9 +7,9 @@
 <body>
 <div th:insert="basicfrag :: navFrag"></div>
 
-<div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4 title-display">Spring Boot Dealership</h1>
-</div>
+
+<h1 class="display-4 title-display">Add a Category</h1>
+
 <form th:action="@{/processcategory}" th:object="${category}" method="post">
     <div class="container">
         <input th:field="*{id}" type="hidden">

@@ -7,9 +7,9 @@
 <body>
 <div th:insert="basicfrag :: navFrag"></div>
 
-<div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4 title-display">Car Listing</h1>
-</div>
+
+<h1 class="display-4 subtitle-display">Add a Car</h1>
+
 <form th:action="@{/processcar}" th:object="${car}" method="post">
     <div class="container">
         <input th:field="*{id}" type="hidden">
@@ -19,22 +19,19 @@
         Quantity:<input th:field="*{qty}" type="text"><br/>
         Category:<select th:field="*{category}" multiple>
 
-                <option th:each ="item:${allcategories}"
-                    th:text="${item.title}"
-                    th:value="${item.id}">
-                </option>
-        </select>
+        <option th:each="item:${allcategories}"
+                th:text="${item.title}"
+                th:value="${item.id}">
+        </option>
+    </select>
     </div>
     <br/>
     <input type="submit" value="Submit"/>
 </form>
 
 
-
-
 <div th:insert="basicfrag :: copyFrag"></div>
 <div th:insert="basicfrag :: scriptFrag"></div>
-
 
 
 </body>
