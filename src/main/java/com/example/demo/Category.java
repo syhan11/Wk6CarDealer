@@ -11,7 +11,7 @@ public class Category {
 
     private String title;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Set<Car> cars;
 
     public Category() {
