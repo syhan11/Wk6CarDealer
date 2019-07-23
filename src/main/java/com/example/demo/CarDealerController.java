@@ -56,7 +56,8 @@ public class CarDealerController {
         return "updatecar";
     }
 
-    @RequestMapping("/deletecar/{id}")
+
+    @RequestMapping("/delcar/{id}")
     public String deleteCar(@PathVariable("id") long id, Model model) {
         carRepository.deleteById(id);
         return "redirect:/listcar";
